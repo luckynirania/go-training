@@ -1,10 +1,9 @@
 package main
 
 import (
-	"lokesh/loki"
+	"lokesh/assignments/ex8"
 )
 
 func main() {
-	loki.A1()
-	loki.A2()
+	ex8.Demo()
 }
