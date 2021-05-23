@@ -1,12 +1,9 @@
-package main
+package ex8
 
 import (
-	"encoding/json"
-	"encoding/xml"
 	"flag"
 	"fmt"
 	"log"
-	"os"
 )
 
 type Employee struct {
@@ -22,7 +19,13 @@ type Department struct {
 	level int
 }
 
-func main() {
+func check(err error) {
+	if err != nil {
+		log.Fatal(err)
+	}
+}
+
+func Demo() {
 	D1 := Department{
 		"Technical",
 		10,
@@ -58,118 +61,35 @@ func main() {
 	}
 
 	// Writing Employees to JSON
-	err := writeJSON(E1, e1+".json")
-	if err != nil {
-		log.Fatal(err)
-	}
+	err := WriteJSON(E1, e1+".json")
+	check(err)
 
-	err = writeJSON(E2, e2+".json")
-	if err != nil {
-		log.Fatal((err))
-	}
+	err = WriteJSON(E2, e2+".json")
+	check(err)
 
 	// Writing Employees to XML
-	err = writeXML(E1, e1+".xml")
-	if err != nil {
-		log.Fatal(err)
-	}
+	err = WriteXML(E1, e1+".xml")
+	check(err)
 
-	err = writeXML(E2, e2+".xml")
-	if err != nil {
-		log.Fatal((err))
-	}
+	err = WriteXML(E2, e2+".xml")
+	check(err)
 
 	// Reading Employees from JSON
-	E1fromJSON, err := readJSON(e1 + ".json")
-	if err != nil {
-		log.Fatal(err)
-	}
+	E1fromJSON, err := ReadJSON(e1 + ".json")
+	check(err)
 	fmt.Println(E1fromJSON)
 
-	E2fromJSON, err := readJSON(e2 + ".json")
-	if err != nil {
-		log.Fatal(err)
-	}
+	E2fromJSON, err := ReadJSON(e2 + ".json")
+	check(err)
 	fmt.Println(E2fromJSON)
 
 	// Reading Employees from XML
-	E1fromXML, err := readXML(e1 + ".xml")
-	if err != nil {
-		log.Fatal(err)
-	}
+	E1fromXML, err := ReadXML(e1 + ".xml")
+	check(err)
 	fmt.Println(E1fromXML)
 
-	E2fromXML, err := readXML(e2 + ".xml")
-	if err != nil {
-		log.Fatal(err)
-	}
+	E2fromXML, err := ReadXML(e2 + ".xml")
+	check(err)
 	fmt.Println(E2fromXML)
 
-}
-func writeJSON(e Employee, output string) error {
-	file, err := os.Create(output)
-	if err != nil {
-		return err
-	}
-	defer file.Close()
-
-	employeeJSON, err := json.MarshalIndent(e, "", "  ")
-	if err != nil {
-		return err
-	} else {
-		if _, err := file.Write(employeeJSON); err != nil {
-			return err
-		}
-		// fmt.Println(string(employeeJSON))
-	}
-	return nil
-}
-
-func readJSON(input string) (Employee, error) {
-	f, err := os.Open(input)
-	if err != nil {
-		return Employee{}, err
-	}
-	defer f.Close()
-
-	var employee Employee
-	err = json.NewDecoder(f).Decode(&employee)
-	if err != nil {
-		return Employee{}, err
-	}
-	return employee, nil
-}
-
-func writeXML(e Employee, output string) error {
-	file, err := os.Create(output)
-	if err != nil {
-		return err
-	}
-	defer file.Close()
-
-	employeeXML, err := xml.MarshalIndent(e, "", "  ")
-	if err != nil {
-		return err
-	} else {
-		if _, err := file.Write(employeeXML); err != nil {
-			return err
-		}
-		// fmt.Println(string(employeeXML))
-	}
-	return nil
-}
-
-func readXML(input string) (Employee, error) {
-	f, err := os.Open(input)
-	if err != nil {
-		return Employee{}, err
-	}
-	defer f.Close()
-
-	var employee Employee
-	err = xml.NewDecoder(f).Decode(&employee)
-	if err != nil {
-		return Employee{}, err
-	}
-	return employee, nil
 }
