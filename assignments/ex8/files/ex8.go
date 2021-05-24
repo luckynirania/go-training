@@ -1,4 +1,4 @@
-package ex8
+package jsonxml
 
 import (
 	"flag"
