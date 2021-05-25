@@ -1,18 +1,15 @@
 package httpTraining
 
 import (
-	"bytes"
-	"encoding/json"
 	"fmt"
 	"net/http"
-	"time"
 )
 
 func (cl *Client) DeleteThing(thingUUID string) error {
 	client := http.Client{}
-	todo := GetThingResponse{"", "", "", time.Now(), time.Now()}
-	jsonReq, _ := json.Marshal(todo)
-	req, err := http.NewRequest("DELETE", cl.Hostname+"/thing/"+thingUUID, bytes.NewBuffer(jsonReq))
+	// todo := GetThingResponse{"", "", "", time.Now(), time.Now()}
+	// jsonReq, _ := json.Marshal(todo)
+	req, err := http.NewRequest("DELETE", cl.Hostname+"/thing/"+thingUUID, nil)
 	check(err)
 
 	req.Header.Set("Content-Type", "application/json; charset=utf-8")

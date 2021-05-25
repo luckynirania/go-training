@@ -27,38 +27,38 @@ func main() {
 	// ---------------------------------------------------------------------------------------------
 
 	// Delete
-	err = client.DeleteThing("12db965a-5746-40f1-a3b0-5763ed9269d4")
-	if err != nil {
-		check(err)
-	}
-	fmt.Println("200 OK")
-	fmt.Println()
-	// ---------------------------------------------------------------------------------------------
-
-	// GetThing usung UUID
-	respi, err := client.GetThingOnUUID("97fb41b1-0bdc-488a-9e04-b34eb70d919d")
-	if err != nil {
-		check(err)
-	}
-	fmt.Printf("%v", respi)
-	fmt.Println()
-	// ---------------------------------------------------------------------------------------------
-
-	// Post a new thing
-	respi, err = client.CreateThing("Lokesh", "Posting here")
-	if err != nil {
-		check(err)
-	}
-	fmt.Printf("%v", respi)
-	fmt.Println()
+	// err = client.DeleteThing("12db965a-5746-40f1-a3b0-5763ed9269d4")
+	// if err != nil {
+	// 	check(err)
+	// }
+	// fmt.Println("200 OK")
+	// fmt.Println()
 	// // ---------------------------------------------------------------------------------------------
 
-	// // PUT a Thing
-	respi, err = client.PutThing("97fb41b1-0bdc-488a-9e04-b34eb70d919d", "Lokesh", "Putting here")
-	if err != nil {
-		check(err)
-	}
-	fmt.Printf("%v", respi)
-	fmt.Println()
+	// // GetThing usung UUID
+	// respi, err := client.GetThingOnUUID("97fb41b1-0bdc-488a-9e04-b34eb70d919d")
+	// if err != nil {
+	// 	check(err)
+	// }
+	// fmt.Printf("%v", respi)
+	// fmt.Println()
+	// // ---------------------------------------------------------------------------------------------
+
+	// // Post a new thing
+	// respi, err = client.CreateThing("Lokesh", "Posting here")
+	// if err != nil {
+	// 	check(err)
+	// }
+	// fmt.Printf("%v", respi)
+	// fmt.Println()
+	// // // ---------------------------------------------------------------------------------------------
+
+	// // // PUT a Thing
+	// respi, err = client.PutThing("97fb41b1-0bdc-488a-9e04-b34eb70d919d", "Lokesh", "Putting here")
+	// if err != nil {
+	// 	check(err)
+	// }
+	// fmt.Printf("%v", respi)
+	// fmt.Println()
 	// ---------------------------------------------------------------------------------------------
 }
