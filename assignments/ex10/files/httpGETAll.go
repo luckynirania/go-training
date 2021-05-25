@@ -2,7 +2,6 @@ package customAPI
 
 import (
 	"encoding/json"
-	"fmt"
 	"io/ioutil"
 	"net/http"
 	"os"
@@ -21,10 +20,6 @@ func GETAll(w http.ResponseWriter, r *http.Request) {
 
 		f.Close()
 	}
-
-	fmt.Println(list)
-
-	// temp := ThingResponse{"", "", "", time.Now(), time.Now()}
 
 	w.Header().Set("Content-Type", "application/json")
 	err := json.NewEncoder(w).Encode(list)

@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"net/http"
 	"os"
-	"time"
 
 	"github.com/gorilla/mux"
 )
@@ -19,10 +18,8 @@ func DELETE(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	thingResponse := ThingResponse{"", "", "", time.Now(), time.Now()}
-
 	w.Header().Set("Content-Type", "application/json")
-	err := json.NewEncoder(w).Encode(thingResponse)
+	err := json.NewEncoder(w).Encode(nil)
 	if err != nil {
 		http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
 		return
