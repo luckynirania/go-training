@@ -7,6 +7,7 @@ require (
 	// github.com/google/go-dap v0.5.0 // indirect
 	github.com/google/uuid v1.2.0
 	github.com/gorilla/mux v1.8.0
+	github.com/stretchr/testify v1.7.0
 // 	github.com/mattn/go-colorable v0.1.8 // indirect
 // 	github.com/mattn/go-runewidth v0.0.12 // indirect
 // 	github.com/peterh/liner v1.2.1 // indirect
