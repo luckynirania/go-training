@@ -8,7 +8,8 @@ import (
 )
 
 func (s *server) GetAllThing(w http.ResponseWriter, r *http.Request) {
-	things, _, err := s.db.ListThings(0, s.db.GetSize())
+	size, _ := s.db.GetSize()
+	things, _, err := s.db.ListThings(0, size)
 	if err == db.ErrThingNotFound {
 		// fmt.Println(err)
 		http.Error(w, http.StatusText(http.StatusNotFound), http.StatusNotFound)
