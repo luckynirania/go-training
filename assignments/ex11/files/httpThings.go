@@ -24,7 +24,7 @@ func NewServer(db db.DB) *server {
 
 func (s *server) Routes() {
 	s.router = mux.NewRouter()
-	s.router.HandleFunc("/thing", s.GetAllThing).Methods("GET")
+	s.router.HandleFunc("/thing/", s.GetAllThing).Methods("GET")
 	s.router.HandleFunc("/thing/{uuid}", s.GetThing).Methods("GET")
 	s.router.HandleFunc("/thing/{uuid}", s.PutThing).Methods("PUT")
 	s.router.HandleFunc("/thing/{uuid}", s.DeleteThing).Methods("DELETE")
